@@ -83,10 +83,16 @@ SLEEP_LED_ENABLE = no
 API_SYSEX_ENABLE = no
 RGBLIGHT_ENABLE = yes
 RGB_MATRIX_ENABLE = no # enable later
+RGB_HID_ENABLE = yes
+
 
 ifeq ($(strip $(RGB_MATRIX_ENABLE)), no)
   SRC += i2c_master.c
 endif
 
+ifeq ($(strip $(RGB_HID_ENABLE)), yes)
+	RAW_ENABLE = yes
+  SRC += rgb_hid_protocol.c
+endif
 
 LAYOUTS = ergodox
